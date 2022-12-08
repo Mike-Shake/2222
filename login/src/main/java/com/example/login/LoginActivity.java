@@ -3,14 +3,16 @@ package com.example.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.baselibs.ServiceFactory;
 
-import EventBus.EventMessage;
 import org.greenrobot.eventbus.EventBus;
 
+import EventBus.EventMessage;
 
 @Route(path="/login/login1")
 public class LoginActivity extends AppCompatActivity {
@@ -19,15 +21,21 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        findViewById(R.id.Login_btn).setOnClickListener(new View.OnClickListener() {
+        Button login_btn = findViewById(R.id.Login_btn);
+        login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginUtil.islogin=true;
-                LoginUtil.passwors="admin";
-                ServiceFactory.getInstance().setLoginService(new AccoutService(LoginUtil.islogin, LoginUtil.passwors));
+                //2.将状态和用户信息上传到工具类
+                LoginUtil.isLogin = true;
+                LoginUtil.password = "admin";
 
-                EventBus.getDefault().postSticky(new EventMessage(LoginUtil.passwors));
+                //3.将实现类上传到ServiceFactory  2.5.将工具类中的数据作为参数上传到接口实现类
+                ServiceFactory.getInstance().setLoginService(new AccountService(LoginUtil.isLogin,LoginUtil.password));
+
+
+                //这里是第二个:发送EventBus
+                EventBus.getDefault().postSticky(new EventMessage(LoginUtil.password));
+                Log.d("Ning","postMessage");
             }
         });
     }

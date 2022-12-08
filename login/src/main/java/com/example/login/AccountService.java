@@ -2,11 +2,11 @@ package com.example.login;
 
 import com.example.baselibs.LoginService;
 
-public class AccoutService implements LoginService {
+public class AccountService implements LoginService {
     private boolean login;
     private String password;
 
-    public AccoutService(boolean login, String password) {
+    public AccountService(boolean login, String password) {
         this.login = login;
         this.password = password;
     }

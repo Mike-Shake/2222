@@ -3,9 +3,11 @@ plugins {
 }
 
 android {
+    namespace 'com.example.component_demo'
     compileSdk 32
 
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.example.component_demo"
         minSdk 21
         targetSdk 32
@@ -15,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions{
             annotationProcessorOptions{
-                arguments = [AROUTER_MODULE_NAME:project.getName(),AROUTER_GENERATE_DOC:"enable"]
+                arguments = [AROUTER_MODULE_NAME:project.getName()]
             }
         }
     }

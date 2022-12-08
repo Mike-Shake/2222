@@ -4,6 +4,7 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 android {
+    namespace 'com.example.share'
     compileSdk 32
 
     defaultConfig {
@@ -15,7 +16,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         //配置ARouter
@@ -41,6 +42,7 @@ android {
         main{
             if(isModule.toBoolean()){
                 manifest.srcFile 'src/main/AndroidManifest.xml'
+
             }else{
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }

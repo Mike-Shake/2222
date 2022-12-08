@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -16,14 +17,15 @@ public class ShareActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
-
-        findViewById(R.id.Share_btn).setOnClickListener(new View.OnClickListener() {
+        Button share_btn = findViewById(R.id.Share_button);
+        share_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(ServiceFactory.getInstance().getLoginService().isLogin()){
-                    Toast.makeText(ShareActivity.this,"分享成功！", Toast.LENGTH_SHORT).show();
+                    //如果已经存在实现类，且已经登录(true)
+                    Toast.makeText(getApplicationContext(),"分享成功!",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(ShareActivity.this,"分享失败，请先登录！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"分享失败!",Toast.LENGTH_SHORT).show();
                 }
             }
         });

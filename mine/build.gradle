@@ -5,21 +5,23 @@ if (isModule.toBoolean()) {
 }
 
 android {
+    namespace 'com.example.mine'
     compileSdk 32
 
     defaultConfig {
-        if(isModule.toBoolean()){
+        if (isModule.toBoolean()) {
             applicationId "com.example.mine"
         }
         minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions{
-            annotationProcessorOptions{
-                arguments = [AROUTER_MODULE_NAME:project.getName()]
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
@@ -33,6 +35,15 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+        }
     }
 }
 

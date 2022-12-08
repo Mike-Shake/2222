@@ -5,6 +5,7 @@ if (isModule.toBoolean()) {
 }
 
 android {
+    namespace 'com.example.login'
     compileSdk 32
 
     defaultConfig {
@@ -17,9 +18,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions{
-            annotationProcessorOptions{
-                arguments = [AROUTER_MODULE_NAME:project.getName()]
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
@@ -35,11 +36,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    sourceSets{
-        main{
-            if(isModule.toBoolean()){
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-            }else{
+            } else {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }
         }

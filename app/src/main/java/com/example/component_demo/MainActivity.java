@@ -4,35 +4,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private Button share;
+    private Button login;
+    private Button mine;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        findViewById(R.id.loginBtn).setOnClickListener(new View.OnClickListener() {
+        share = findViewById(R.id.shareBtn);
+        login = findViewById(R.id.loginBtn);
+        mine = findViewById(R.id.mineBtn);
+        share.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build("/login/login1").navigation();
-
-            }
-        });
-
-        findViewById(R.id.shareBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 ARouter.getInstance().build("/share/share1").navigation();
             }
         });
-
-        findViewById(R.id.mineBtn).setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                ARouter.getInstance().build("/login/login1").navigation();
+            }
+        });
+        mine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 ARouter.getInstance().build("/mine/mine1").navigation();
             }
         });
