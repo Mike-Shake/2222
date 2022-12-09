@@ -38,6 +38,8 @@ public class MainApplication extends BaseApplication {
                 baseApplication.init(this);
             }catch (Exception e){
                 e.printStackTrace();
+
+
             }
         }
     }

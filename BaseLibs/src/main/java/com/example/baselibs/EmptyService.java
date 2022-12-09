@@ -7,6 +7,8 @@ public class EmptyService implements LoginService{
     }
 
     @Override
+
+
     public String getPassword() {
         return null;
     }

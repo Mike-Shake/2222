@@ -33,8 +33,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mine.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
+
                 ARouter.getInstance().build("/mine/mine1").navigation();
             }
         });
